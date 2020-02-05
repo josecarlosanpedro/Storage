@@ -4,6 +4,7 @@
 @import './modules/index';
 @import './components/header';
 @import './components/footer';
+@import './components/layout';
 
 .main-content {
   min-height: calc(89vh - 15px);
