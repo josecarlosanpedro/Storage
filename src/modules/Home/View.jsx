@@ -2,8 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import Spin from 'antd/lib/spin';
 import isEmpty from 'lodash/isEmpty'
+import Icon from 'antd/lib/icon'
+import Progress from 'antd/lib/progress'
 import firebase from "firebase";
-import FileUploader from "react-firebase-file-uploader";
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
+
 
 const Home = props => {
   
@@ -39,9 +42,9 @@ const Home = props => {
   };
   return (
     <section className="home-section">
-      Home
-      {url}
-      <FileUploader
+      {/* {url} */}
+      <div className="uploader">
+      <CustomUploadButton
             accept="*"
             name="file"
             randomizeFilename
@@ -50,7 +53,14 @@ const Home = props => {
             onUploadError={handleUploadError}
             onUploadSuccess={handleUploadSuccess}
             onProgress={handleProgress}
-          />
+            multiple
+            style={{backgroundColor: 'steelblue', color: 'white', padding:20, height: "150px", borderRadius: 4}}
+        >
+          <Icon type="cloud-upload" /> Upload 
+        </ CustomUploadButton >
+        
+        </div>
+        <Progress percent={progress}  />
     </section>
   )
 }
